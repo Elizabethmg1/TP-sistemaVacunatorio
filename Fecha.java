@@ -69,7 +69,10 @@ public class Fecha implements Comparable<Fecha> {
 	}
 
 	public void avanzarUnDia() {
-		fecha = fecha.plusDays(1);
+		avanzarDias(1);
+	}
+	public void avanzarDias(int dias){
+		fecha=fecha.plusDays(dias);
 	}
 
 	public boolean anterior(Fecha otraFecha) {
