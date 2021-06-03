@@ -48,11 +48,15 @@ public class CentroVacunacion {
 			return this.listaDeEspera;
 		}
 		
-		public int vacunasDisponibles() {
+		public int vacunasDisponibles() { //todas las vacunas
 			this.vacunatorio.darCantidadDeVacunas();
 		}
 		
-		public HashSet<Persona> turnosConFecha(Fecha fecha){
+		public int vacunasDisponibles(String vacuna) {  //vacuna especifica
+			this.vacunatorio.darCantidadDeVacunas(vacuna);
+		}
+		
+		public HashSet<Persona> turnosConFecha(Fecha fecha){  //
 			if(this.fechaConTurnos.containsKey(fecha)) {
 				return this.fechaConTurnos.get(fecha).darListaPersona();
 			}
@@ -61,6 +65,11 @@ public class CentroVacunacion {
 		public HashMap<Persona,String> reporteVacunacion() {
 			return null; //completar
 	}
+		
+		public HashMap<Persona,String> reporteVacunasVencidas(){
+			return null; //completar
+		}
+		
 		public boolean vacunarInscripto(int dni, Fecha fecha) {
 			return false;
 		}
