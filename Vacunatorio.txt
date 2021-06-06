@@ -1,0 +1,65 @@
+package CentroVacunacion;
+
+import java.sql.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+
+
+public class Vacunatorio {
+	
+		private HashMap <String,Vacunas> Vacunas;
+		private HashSet  <Vacunas> _Vacunas;
+		Vacunas vac; 
+	
+
+   Vacunatorio(){
+    	Vacunas=new HashMap<String,Vacunas> (); //Clave:nombre, VAlorObjeto
+    	_Vacunas=new HashSet<Vacunas> ();//Lista de vacuna
+      }
+    
+	public void  ingresanVacunas(String nombre, int cantidad, Fecha fecha) {
+		if (!Vacunas.containsKey(nombre))
+			Vacunas.put(nombre,new Vacunas(nombre,cantidad,fecha));
+		if (!_Vacunas.contains(nombre))
+			_Vacunas.add(new Vacunas(nombre,cantidad,fecha));	
+		 
+	}
+
+	
+	
+	public int  darCantidadDeVacunas() {
+		
+		return vac.darCantidadVacunasTotal();
+	}
+	
+	
+	public int darCantidadDeVacunas(String elemVac) {
+		return vac.darCantidadVacunasTotal(elemVac);
+		
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Vacunatorio [Vacunas=" + Vacunas + ", vac=" + vac + "]";
+	}
+
+	
+	public int esEdadPermitida(String nombre) {
+		return vac.EsEdadPermitida(nombre);
+	}
+	
+	public int DameTemperatura(String nombre) {
+		return vac.dameTemperatura(nombre);
+	}
+	
+	public void modificarCantidad(String Nombre) {
+		vac.modificarStock(Nombre);
+	}
+	
+	
+
+	
+	
+}
