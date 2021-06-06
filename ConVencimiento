@@ -1,0 +1,44 @@
+package CentroVacunacion;
+
+import java.util.*;
+import java.sql.Date;
+
+public class ConVencimiento extends Vacunas {	
+	
+	private Fecha fechaVencimiento; //
+
+	ConVencimiento(String nombre, int Stock, Fecha fecha) {
+		this.fechaVencimiento=vence(fecha);
+	}
+	
+	private Fecha vence(Fecha fecha) {
+		//me retorna la fecha que se vence
+		//operacion
+	return fecha;
+	}
+
+	
+	public boolean estaVencida(Fecha fecha){
+		if (fecha==this.fechaVencimiento)
+			return true;
+		return false;
+	}
+
+	public Fecha getFechaVencimiento() {
+		return this.fechaVencimiento;
+	}
+
+	public void setFechaVencimiento(Fecha fechaVencimiento) {
+		this.fechaVencimiento = fechaVencimiento;
+	}
+	public String queTemperaturanecesitas() {
+		return null;
+		
+	}
+
+	@Override
+	public String toString() {
+		return " ConVencimiento [fechaVencimiento=" + fechaVencimiento +"\n";
+	}
+
+	
