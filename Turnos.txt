@@ -1,0 +1,45 @@
+package centroVacunacion;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
+public class Turnos {
+	private HashMap<Persona,String> personaVacuna; //turnos asignados aun no vacunados
+	private HashMap<Integer,String> personasVacunadas; //personas ya vacunadas
+	private int cupoPorDia;
+	
+	public Turnos(int cupoPorDia) {
+		HashMap<Persona,String> aux=new HashMap<Persona,String>();
+		this.personaVacuna=aux;
+		this.cupoPorDia=cupoPorDia;
+	}
+	
+	public void agregarTurno(Persona persona, String vacuna) {
+		this.personaVacuna.put(persona, vacuna);
+	}
+	
+	public Set<Persona> darListaPersona(){
+		return this.personaVacuna.keySet();
+	}
+	
+	public HashMap<Integer,String> darListaPersonasVacunadas() {
+		return this.personasVacunadas;
+	}
+	
+	//USO ITERATOR	
+	public void sePresento(Integer dni) {
+		Iterator<Persona> itPersona=this.personaVacuna.keySet().iterator();
+		Persona p;
+		Integer dniPersona;
+		while(itPersona.hasNext()) {
+			p=itPersona.next();
+			dniPersona=p.darDni();
+			if(dniPersona==dni) { //si el dni pasado por parametro coincide con alguien que tiene turno
+				this.personasVacunadas.put(dniPersona, this.personaVacuna.get(itPersona)); //paso a la persona a vacunadas
+				this.personaVacuna.remove(itPersona); //remuevo a la persona de la lista de turnos
+			}
+		}
+	}
+}
