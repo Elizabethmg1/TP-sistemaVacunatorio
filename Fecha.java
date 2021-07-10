@@ -69,9 +69,10 @@ public class Fecha implements Comparable<Fecha> {
 	}
 
 	public void avanzarUnDia() {
-		avanzarDias(1);
+		fecha = fecha.plusDays(1);
 	}
-	public void avanzarDias(int dias){
+	
+	public void avanzarDias(int dias) {
 		fecha=fecha.plusDays(dias);
 	}
 
@@ -107,6 +108,11 @@ public class Fecha implements Comparable<Fecha> {
 	@Override
 	public int hashCode() {
 		return fecha == null ? 0 : fecha.hashCode();
+	}
+
+	@Override
+	public String toString() {
+		return "Fecha [" + fecha + "]";
 	}
 	
 	

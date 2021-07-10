@@ -1,27 +1,42 @@
-package CentroVacunacion;
+package centroVacunacion;
 
-import java.util.*;
-import java.sql.Date;
+public class ConVencimiento extends Vacuna{
+	private Fecha fechaVencimiento; //
 
-public class conVencimiento extends Vacunas {
-	private Date fechaVencimiento; //
-	
-	conVencimiento(String nombre, int Stock, Date fecha) {
-		super(nombre, Stock,fecha);
-		this.fechaVencimiento=vence(fecha);
+	ConVencimiento(String nombre, Fecha fechaDeIngreso) {
+		super(fechaDeIngreso);
+		if(nombre.equals("Moderna")) {
+			Fecha vence=new Fecha(fechaDeIngreso.dia(),fechaDeIngreso.mes(),fechaDeIngreso.anio());
+			vence.avanzarDias(60);
+			this.fechaVencimiento=vence;
+		}
+		else if(nombre.equals("Pfizer")) {
+			Fecha vence=new Fecha(fechaDeIngreso.dia(),fechaDeIngreso.mes(),fechaDeIngreso.anio());
+			vence.avanzarDias(30);
+			this.fechaVencimiento=vence;
+		}
+	}
+	@Override
+	public boolean vences() {
+		return true;
 	}
 	
-	private Date vence(Date fecha) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public boolean estaVencida(Date fecha){
+	@Override
+	public boolean estaVencida(){
+		if (Fecha.hoy().posterior(this.getFechaVencimiento())) {
+			return true;
+		}
 		return false;
 	}
+    @Override
+	public Fecha getFechaVencimiento() {
+		return this.fechaVencimiento;
+	}
 
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return " ConVencimiento [fechaVencimiento=" + fechaVencimiento +"\n";
+	}
 
 }

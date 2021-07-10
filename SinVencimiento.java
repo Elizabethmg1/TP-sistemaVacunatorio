@@ -1,14 +1,15 @@
-package CentroVacunacion;
+package centroVacunacion;
 
-import java.sql.Date;
 
-public class SinVencimiento  extends Vacunas{
+public class SinVencimiento  extends Vacuna{
 
-	SinVencimiento(String nombre, int Stock, Date fecha) {
-		super(nombre, Stock, fecha);
-		// TODO Auto-generated constructor stub
+	SinVencimiento(Fecha fechaDeIngreso) {
+		super(fechaDeIngreso);
 	}
 	
+	@Override
+	public boolean vences() {
+		return false;
+	}
 	
-
 }
